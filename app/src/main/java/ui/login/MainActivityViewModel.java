@@ -26,6 +26,7 @@ public class MainActivityViewModel extends ViewModel {
         usuario= ApiClient.login(context,email,pass);
         if(usuario != null){
             Intent intent= new Intent(context, RegistroActivity.class);
+            intent.putExtra("registro","lleno");
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }else{
@@ -34,10 +35,9 @@ public class MainActivityViewModel extends ViewModel {
 
     }
     public  void registrarDatos(Context context){
-        //borrar datos del shared
-        //Usuario usuario=new Usuario();
-        //ApiClient.guardar(context,usuario);
+        //borrar datos del archivo
         Intent intent= new Intent(context, RegistroActivity.class);
+        intent.putExtra("registro","vacio");
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }

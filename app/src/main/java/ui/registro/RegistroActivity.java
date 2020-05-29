@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +22,10 @@ public class RegistroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+        Intent intent= getIntent();
+        String registro=intent.getStringExtra("registro");
         iniciarVista();
+
         vm= ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(RegistroActivityViewModel.class);
         vm.getUsuarioMutableLiveData().observe(this, new Observer<Usuario>() {
             @Override
@@ -33,7 +37,7 @@ public class RegistroActivity extends AppCompatActivity {
                 etpass.setText(usuario.getPass());
             }
         });
-        vm.cargarDatos(getApplicationContext());
+        vm.cargarDatos(getApplicationContext(),registro);
     }
     public void iniciarVista(){
         etdni=findViewById(R.id.etDniRegistro);

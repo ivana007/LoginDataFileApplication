@@ -1,6 +1,7 @@
 package ui.registro;
 
 import android.content.Context;
+import android.content.Intent;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -20,12 +21,19 @@ public class RegistroActivityViewModel extends ViewModel {
         return usuarioMutableLiveData;
     }
 
-    public  void cargarDatos(Context context){
-        Usuario usuario= ApiClient.leer(context);
-        if(usuario !=null){
+    public  void cargarDatos(Context context,String reg){
+
+        if(reg.equals("vacio")){
+            Usuario usuario=new Usuario();
             usuarioMutableLiveData.setValue(usuario);
+
         }
-       // usuarioMutableLiveData.setValue(usuario);
+        if(reg.equals("lleno")){
+
+            Usuario usuario1= ApiClient.leer(context);
+            usuarioMutableLiveData.setValue(usuario1);
+        }
+
     }
 
 
