@@ -85,9 +85,9 @@ public class ApiClient {
                 apellido = dis.readUTF();
                 email = dis.readUTF();
                 pass = dis.readUTF();
-                usuario = new Usuario(dni, nombre, apellido, email, pass);
-                if (usuario.getEmail().equals(mail) && usuario.getPass().equals(passw)) {
-
+               Usuario usuario1 = new Usuario(dni, nombre, apellido, email, pass);
+                if (usuario1.getEmail().equals(mail) && usuario1.getPass().equals(passw)) {
+                    return usuario1;
                 }
             }
             fi.close();

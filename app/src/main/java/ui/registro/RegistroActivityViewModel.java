@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 
 import model.Usuario;
 import request.ApiClient;
+import ui.login.MainActivity;
 
 public class RegistroActivityViewModel extends ViewModel {
     private MutableLiveData<Usuario> usuarioMutableLiveData;
@@ -40,6 +41,9 @@ public class RegistroActivityViewModel extends ViewModel {
     public void guardarDatos(Context context, Usuario usuario){
         if(usuario!=null){
             ApiClient.guardar(context,usuario);
+            Intent intent=new Intent(context, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
         }
 
     }

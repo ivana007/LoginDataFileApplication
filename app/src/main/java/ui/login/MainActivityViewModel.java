@@ -22,9 +22,10 @@ public class MainActivityViewModel extends ViewModel {
     }
 
     public void validarDatos(Context context, String email, String pass){
-        Usuario usuario=new Usuario();
+        Usuario usuario=null;
         usuario= ApiClient.login(context,email,pass);
         if(usuario != null){
+            
             Intent intent= new Intent(context, RegistroActivity.class);
             intent.putExtra("registro","lleno");
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
